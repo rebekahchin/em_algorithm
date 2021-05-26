@@ -41,9 +41,9 @@ Values | Description
 You can use the priciple component method to calculate `L`. \
 Given an `nxp` matrix of observations, `X`, `L` would be a `pxk` matrix where `k ≤ 0.5p`. \
 `k` is determined by plotting a scree diagram of eigenvalues of the variance of each component against the number of components in the model. A smaller `k` is preferred. \
-`L` is then a matrix of vectors of ![image](https://user-images.githubusercontent.com/83638650/119690179-0a1fa400-be7c-11eb-89f0-f06ef9773aa7.png) for j=1,...,k, where ![image](https://user-images.githubusercontent.com/83638650/119690327-28859f80-be7c-11eb-8024-84dee0b29b7a.png) is an eigenvalue and its corresponding eigenvector of the correlation matrix `R`. Note that the eigenvalue-eigenvector pair are arranged from largest to smallest eigenvalue. \
+`L` is then a matrix of vectors of <img src="https://user-images.githubusercontent.com/83638650/119690179-0a1fa400-be7c-11eb-89f0-f06ef9773aa7.png" height="20"> for j=1,...,k, where <img src="https://user-images.githubusercontent.com/83638650/119690327-28859f80-be7c-11eb-8024-84dee0b29b7a.png" height="20"> is an eigenvalue and its corresponding eigenvector of the correlation matrix `R`. Note that the eigenvalue-eigenvector pair are arranged from largest to smallest eigenvalue. \
 `psi` is then calculated with \
-![image](https://user-images.githubusercontent.com/83638650/119690456-4a7f2200-be7c-11eb-8b56-73917f13a125.png),\
+<img src="https://user-images.githubusercontent.com/83638650/119690456-4a7f2200-be7c-11eb-8b56-73917f13a125.png" height="25">,\
 where the non-diagonal entries are zero.
 
 ## References

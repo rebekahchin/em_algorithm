@@ -1,17 +1,13 @@
 # em_algorithm
 EM algorithm for improving factors found with during factor analysis
 
-## What is the EM algorithm?
-
-## What does this code do?
-
 ## Using the R file
 ### Prerequisites
 * R 4.0.5
 * the openblas package
  
 ### Description
-Given a matrix of observations, a matrix of factor loadings, and a diagonal matrix of the variance of the errors, `em` iteratively computes a new factor loadings and variance of errors until they converge with the previous terms. \
+Given a matrix of observations, a matrix of factor loadings, and a diagonal matrix of the variance of the errors, the generic function `em` iteratively computes a new factor loadings and variance of errors until they converge with the previous terms. \
 `em` returns a list of the new factor loadings, variance of errors, and the score of the new factor loadings. 
 
 ### Usage
@@ -30,7 +26,7 @@ Arguments | Description
 `em` uses `cov` to determine the correlation matrix of `Z`, `solve` to invert matrices, and `diag` to obtain a new **Ψ**.
 
 ### Values
-`em` returns a generic list containing the following components: \
+`em` returns a generic list containing the following components:
 Values | Description
 ------ | -----------
 `L_new` | a numeric data matrix of improved factor loadings
@@ -40,10 +36,10 @@ Values | Description
 ### Notes
 You can use the priciple component method to calculate `L`. \
 Given an `nxp` matrix of observations, `X`, `L` would be a `pxk` matrix where `k ≤ 0.5p`. \
-`k` is determined by plotting a scree diagram of eigenvalues of the variance of each component against the number of components in the model. A smaller `k` is preferred. \
-`L` is then a matrix of vectors of <img src="https://user-images.githubusercontent.com/83638650/119690179-0a1fa400-be7c-11eb-89f0-f06ef9773aa7.png" height="20"> for j=1,...,k, where <img src="https://user-images.githubusercontent.com/83638650/119690327-28859f80-be7c-11eb-8024-84dee0b29b7a.png" height="20"> is an eigenvalue and its corresponding eigenvector of the correlation matrix `R`. Note that the eigenvalue-eigenvector pair are arranged from largest to smallest eigenvalue. \
+`k` is determined by plotting a scree diagram of the variance of each component against the number of components in the model. A smaller `k` is preferred. \
+`L` is then a matrix of the vectors <img src="https://user-images.githubusercontent.com/83638650/119690179-0a1fa400-be7c-11eb-89f0-f06ef9773aa7.png" height="20"> for j=1,...,k, where <img src="https://user-images.githubusercontent.com/83638650/119690327-28859f80-be7c-11eb-8024-84dee0b29b7a.png" height="20"> is an eigenvalue and its corresponding eigenvector of the correlation matrix `R`. Note that the eigenvalue-eigenvector pair are arranged from largest to smallest eigenvalue. \
 `psi` is then calculated with \
-<img src="https://user-images.githubusercontent.com/83638650/119690456-4a7f2200-be7c-11eb-8b56-73917f13a125.png" height="25">,\
+<img src="https://user-images.githubusercontent.com/83638650/119690456-4a7f2200-be7c-11eb-8b56-73917f13a125.png" height="25">, for i=1,...,p, \
 where the non-diagonal entries are zero.
 
 ## References

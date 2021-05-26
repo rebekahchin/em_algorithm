@@ -38,11 +38,13 @@ Values | Description
 `scores` | a numeric data matrix of the scores calculated using the `L_new`
 
 ### Notes
-You can use the priciple component method to calculate `L`.
-Given an `(nxp)` matrix of observations, `X`, `L` would be a `(pxk)` matrix where `k ≤ 0.5p`. 
+You can use the priciple component method to calculate `L`. \
+Given an `nxp` matrix of observations, `X`, `L` would be a `pxk` matrix where `k ≤ 0.5p`. \
 `k` is determined by plotting a scree diagram of eigenvalues of the variance of each component against the number of components in the model. A smaller `k` is preferred. \
-`L` is then a matrix of vectors of ![image](https://user-images.githubusercontent.com/83638650/119684020-bf4f5d80-be76-11eb-80b9-5482f25298f0.png) for j=1,...,k, where ![image](https://user-images.githubusercontent.com/83638650/119684474-1bb27d00-be77-11eb-8f05-ddd76898d938.png) is an eigenvalue and its corresponding eigenvector of the correlation matrix `R`. Note that the eigenvalue-eigenvector pair are arranged from largest to smallest eigenvalue. \
-`psi` is then calculated using ![image](https://user-images.githubusercontent.com/83638650/119685786-40f3bb00-be78-11eb-9794-2116563f3c42.png), where the non-diagonal entries are zero.\
+`L` is then a matrix of vectors of ![image](https://user-images.githubusercontent.com/83638650/119690179-0a1fa400-be7c-11eb-89f0-f06ef9773aa7.png) for j=1,...,k, where ![image](https://user-images.githubusercontent.com/83638650/119690327-28859f80-be7c-11eb-8024-84dee0b29b7a.png) is an eigenvalue and its corresponding eigenvector of the correlation matrix `R`. Note that the eigenvalue-eigenvector pair are arranged from largest to smallest eigenvalue. \
+`psi` is then calculated with \
+![image](https://user-images.githubusercontent.com/83638650/119690456-4a7f2200-be7c-11eb-8b56-73917f13a125.png),\
+where the non-diagonal entries are zero.
 
 ## References
 1. H. Peng, *EM algorithm for factor models*, 2021, https://www.math.hkbu.edu.hk/~hpeng/Math3806/EM-factor.html (accessed 2021/05/14).

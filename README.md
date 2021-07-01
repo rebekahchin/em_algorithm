@@ -1,5 +1,5 @@
 # em_algorithm
-EM algorithm for improving factors found with during factor analysis. For a demonstration of how the function works, see https://github.com/rebekahchin/em_algorithm/blob/main/demo.pdf
+EM algorithm for improving factors found with during factor analysis. For a demonstration of how the function works, see [demo.pdf](https://github.com/rebekahchin/em_algorithm/blob/main/demo.pdf)
 
 ## Using the R file
 ### Prerequisites

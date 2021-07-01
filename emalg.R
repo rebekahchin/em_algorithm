@@ -45,31 +45,27 @@ mstep<-function(X,L,psi){
   return(emres)
 }
 
-# Iterative script --------------------------------------------------------
-
-emalg<-function(Z,L,psi,tol,maxite){
+emalg<-function(tol,maxite,X,L,psi){
+  Z<-scale(X)
+  Sn<-cov(X)
+  R<-cov2cor(Sn)
   i<-1
-  R<-cor(Z)
   while (i<maxite){
     if (i>1){
       psi<-psi2
       L<-L2
     }
-    res<-emalg(Z,L,psi)
-    L2<-res$L2
-    psi2<-res$psi2
+    mres<-mstep(Z,L,psi)
+    L2<-mres$L2
+    psi2<-mres$psi2
     if (max(abs(psi2-psi))>tol & max(abs(L2-L))>tol){
       i<-i+1
     } else{
       break
     }
   }
-  message("Number of iterations:")
-  message(i)
   scores<-t(L2)%*%solve(R)%*%t(Z)
   scores<-t(scores)
-  res<-list("L_new"=L2,"psi_new"=psi2,"scores"=scores)
+  res<-list("iterations"=i,"L_new"=L2,"psi_new"=psi2,"scores"=scores)
   return(res)
 }
-
-

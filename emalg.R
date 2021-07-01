@@ -2,7 +2,7 @@
 library(ropenblas) #for inverting matrices
 
 # EM algorithm ------------------------------------------------------------
-expfn<-function(x,L,psi){
+estep<-function(x,L,psi){
   #finding the expectation of factors (F) given the observations (X)
   hat<-solve((L%*%t(L)) + psi)
   beta<-t(L)%*%hat
@@ -14,29 +14,29 @@ expfn<-function(x,L,psi){
   exps<-list("exp"=exp,"expsq"=expsq)
   return(exps)
 }
-emalg<-function(X,L,psi){
+mstep<-function(X,L,psi){
   sizeL<-dim(L)
   col<-rep(0,sizeL[1])
   L2<-cbind(col,col,col)
   sizeX<-dim(X)
-  exps<-expfn(X[1,],L,psi)
+  exps<-estep(X[1,],L,psi)
   exp<-exps$exp
   A<-(X[1,]%*%t(exp))
   B<-exps$expsq
   #estimating L_new
   for (i in (2:sizeX[1])){
-    exps<-expfn(X[i,],L,psi)
+    exps<-estep(X[i,],L,psi)
     exp<-exps$exp
     A<-(X[i,]%*%t(exp))+A
     B<-exps$expsq+B
   }
   L2<-A%*%solve(B)
-  exps<-expfn(X[1,],L,psi)
+  exps<-estep(X[1,],L,psi)
   exp<-exps$exp
   C<-(X[1,]%*%t(X[1,]))-(L2%*%exp%*%t(X[1,]))
   #estimating psi_new
   for (i in (2:sizeX[1])){
-    exps<-expfn(X[i,],L,psi)
+    exps<-estep(X[i,],L,psi)
     exp<-exps$exp
     C<-(X[i,]%*%t(X[i,]))-(L2%*%exp%*%t(X[i,]))+C
   }
@@ -47,7 +47,7 @@ emalg<-function(X,L,psi){
 
 # Iterative script --------------------------------------------------------
 
-em<-function(Z,L,psi,tol,maxite){
+emalg<-function(Z,L,psi,tol,maxite){
   i<-1
   R<-cor(Z)
   while (i<maxite){
@@ -67,6 +67,7 @@ em<-function(Z,L,psi,tol,maxite){
   message("Number of iterations:")
   message(i)
   scores<-t(L2)%*%solve(R)%*%t(Z)
+  scores<-t(scores)
   res<-list("L_new"=L2,"psi_new"=psi2,"scores"=scores)
   return(res)
 }

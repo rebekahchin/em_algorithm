@@ -31,7 +31,7 @@ Values | Description
 ------ | -----------
 `L_new` | a numeric data matrix of improved factor loadings
 `psi_new` | a diagonal numeric data matrix of the new variance of the error term
-`scores` | a numeric data matrix of the scores calculated using the `L_new`
+`scores` | a numeric data matrix of the scores calculated with the regression method, using `L_new`
 
 ### Notes
 You can use the priciple component method to calculate `L`. \
